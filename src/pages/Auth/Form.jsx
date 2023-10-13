@@ -113,7 +113,6 @@ const Form = () => {
         })
       );
       setCookie('token', loggedIn.token);
-      console.log(loggedIn.token)
       navigate("/");
     }
     setIsLoading(false);

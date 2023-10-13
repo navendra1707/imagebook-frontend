@@ -46,7 +46,6 @@ const CreatePost = () => {
   const medium = palette.neutral.medium;
 
   const name = user.firstName + " " + user.lastName;
-  console.log(post);
 
   const handlePost = async () => {
     setIsLoading(true);
