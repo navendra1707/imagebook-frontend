@@ -23,7 +23,6 @@ const registerSchema = yup.object().shape({
   lastName: yup.string().required("Last Name is required"),
   email: yup.string().email("Invalid Email").required("Email is required"),
   password: yup.string().required("Password is required"),
-  picture: yup.string().required("Picture is required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -36,7 +35,6 @@ const initialValuesRegister = {
   lastName: "",
   email: "",
   password: "",
-  picture: "",
 };
 
 const initialValuesLogin = {
@@ -54,19 +52,17 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
   const isLogin = location.pathname === "/login";
   const isRegister = location.pathname === "/register";
+  console.log(isRegister)
 
   const register = async (values, onSubmitProps) => {
     setIsLoading(true);
-    const formData = new FormData();
-    for (let value in values) {
-      formData.append(value, values[value]);
-    }
 
     const savedUserResponse = await fetch(
       `${process.env.REACT_APP_BASE_URL}/${REGISTER_API}`,
       {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" }, 
+        body: JSON.stringify(values),
       }
     );
 

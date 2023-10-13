@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import checkSession from "../utils/checkSession";
 import FlexBetween from "../styled/FlexBetween";
+import { useSelector } from "react-redux";
 
 const Post = ({ post }) => {
   const { palette } = useTheme();
@@ -32,13 +33,14 @@ const Post = ({ post }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [views, setViews] = useState(post.views);
   const [loading, setLoading] = useState(false);
+  const user = useSelector(state => state.user);
 
   const defaultBack = palette.background.default;
   const main = palette.neutral.main;
   const [cookies, setCookie] = useCookies(["user"]);
 
-  if (checkSession(cookies.token, setCookie)) {
-    navigate(0);
+  if (checkSession(cookies.token, setCookie) && user) {
+    navigate('/login');
   }
 
   const deletePost = async () => {
