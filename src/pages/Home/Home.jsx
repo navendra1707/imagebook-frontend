@@ -12,7 +12,6 @@ const Home = () => {
       <Stack
         direction={isMobile ? "column" : "row"}
         justifyContent={"space-between"}
-        alignItems={"center"}
         gap={2}
       >
         <CreatePost />

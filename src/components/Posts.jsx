@@ -64,7 +64,8 @@ const Posts = () => {
           No Posts Found
         </Heading>
       ) : (
-        <Stack justifyContent={"center"} alignItems={"center"} gap={2}>
+        <Stack justifyContent={"center"} alignItems={"center"} gap={2}
+        >
           <Heading
             color={palette.neutral.main}
           >
